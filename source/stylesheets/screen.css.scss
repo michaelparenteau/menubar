@@ -2,4 +2,131 @@
 @import "compass/css3";
 @import "compass/reset";
 
+// mixin (this should be it's own file and included as needed)
+@mixin menubar($color, $font-color, $height, $radius: false) {
+  @include background-image(linear-gradient(lighten($color, 10%), darken($color, 20%)));
+  @if $radius != false {
+    @include border-radius($radius); }
+  height: $height;
+  a, li {
+    color: $font-color;
+    text-decoration: none;
+    position: relative;
+    padding: 0 10px;
+    display: block;
+    &:hover {
+      @include background-image(linear-gradient(darken($color, 35%), darken($color, 20%)));
+      ul {
+        display: block; } } }
+  li {
+    @include inline-block;
+    float: left;
+    line-height: $height;
+    border-right: 1px solid rgba(255,255,255,0.25);
+    border-left: 1px solid darken($color, 20%);
+    &:first-child { 
+      border-left: none; 
+      @if $radius != false {
+        @include border-left-radius($radius); } }
+    &:last-child { @include box-shadow(inset -1px 0 0 darken($color, 20%)); }
+    &:hover { cursor: default;}
+    ul {
+      @include border-bottom-radius(8px);
+      @include box-shadow(1px 1px 3px rgba(0,0,0,0.35));
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: darken($color, 20%);
+      padding-bottom: 10px;
+      min-width: 100%;
+      z-index: 2;
+      li {
+        display: block;
+        float: none;
+        height: auto;
+        line-height: 1;
+        padding: 0;
+        &:hover { background: transparent; }
+        a {
+          padding: 5px 10px;
+          &:hover { background: rgba(255,255,255,0.25); } } } } }
+}
+
+// webfonts
+@font-face {
+ font-family: 'ostrichRounded';
+ src: url(/fonts/ostrich-rounded-webfont.eot);
+ src: url(/fonts/ostrich-rounded-webfont.eot?#iefix) format("embedded-opentype"), url(/fonts/ostrich-rounded-webfont.woff) format("woff"), url(/fonts/ostrich-rounded-webfont.ttf) format("truetype"), url(/fonts/ostrich-rounded-webfont.svg#ostrichRounded) format("svg");
+ font-weight: normal;
+ font-style: normal;
+}
+
 // styles start here
+
+body {
+  background: #ebebeb;
+}
+h1 {
+  font-size: 100px;
+  font-family: sans-serif;
+  font-family: ostrichRounded;
+  text-align: center;
+  padding: 40px 0 0;
+  margin-bottom: 0;
+  vertical-align: bottom;
+}
+
+h2 {
+  font-size: 24px;
+  font-family: helvetica, arial, sans-serif;
+  letter-spacing: -1px;
+}
+
+.wrapper {
+  @include box-shadow(0 0 5px rgba(0,0,0,0.5));
+  background: rgba(255,255,255,0.5);
+  width: 600px;
+  margin: 0 auto;
+  height: 100%;
+  padding: 0 40px;
+  position: relative;
+}
+
+.panel {
+  margin: 20px 0 40px;
+}
+
+.gist, .gist-file, .gist-data {
+  font-size: 13px;
+  line-height: 1.4;
+}
+.gist-file {
+  margin: 15px !important;
+}
+
+.menubar {
+  @include box-shadow(1px 1px 3px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.5));
+  font-family: helvetica;
+  font-size: 14px;
+  z-index: 1;
+  margin-bottom: 20px;
+  &.black {
+    @include menubar(#333, #fff, 50px, 4px);
+    border: 1px solid #000;
+  }
+  &.grey {
+    @include menubar(#666, #fff, 50px, 4px);
+    border: 1px solid #666;
+  }
+  &.pink {
+    $color: #EA4C89;
+    @include menubar($color, #fff, 50px, 4px);
+    border: 1px solid darken($color, 20%);
+    text-shadow: 0 1px 1px #000;
+  }
+  &.white {
+    @include menubar(#ebebeb, #333, 50px, 4px);
+    border: 1px solid #999;
+  }
+}
