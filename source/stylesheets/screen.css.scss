@@ -82,7 +82,21 @@ h2 {
   font-family: helvetica, arial, sans-serif;
   letter-spacing: -1px;
 }
-
+.github {
+  @include transition(opacity .3s);
+  width: 64px;
+  height: 64px;
+  text-indent: -100%;
+  overflow: hidden;
+  opacity: 0.35;
+  position: absolute;
+  top: 50px;
+  right: 50px;
+  background: transparent url(/images/gh.png) 0 0 no-repeat;
+  &:hover {
+    opacity: 1;
+  }
+}
 .wrapper {
   @include box-shadow(0 0 5px rgba(0,0,0,0.5));
   background: rgba(255,255,255,0.5);
