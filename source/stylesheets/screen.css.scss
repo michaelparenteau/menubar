@@ -47,6 +47,7 @@
         height: auto;
         line-height: 1;
         padding: 0;
+        white-space: nowrap;
         &:hover { background: transparent; }
         a {
           padding: 5px 10px;
