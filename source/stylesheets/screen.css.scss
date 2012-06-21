@@ -67,6 +67,7 @@
 
 body {
   background: #ebebeb;
+  font-family: helvetica, arial, sans-serif;
 }
 h1 {
   font-size: 100px;
@@ -80,9 +81,17 @@ h1 {
 
 h2 {
   font-size: 24px;
-  font-family: helvetica, arial, sans-serif;
   letter-spacing: -1px;
 }
+
+a { 
+  color: #EA4C89;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
 .github {
   @include transition(opacity .3s);
   width: 64px;
@@ -110,6 +119,12 @@ h2 {
 
 .panel {
   margin: 20px 0 40px;
+}
+
+.footer {
+  text-align: center;
+  color: #999;
+  font-size: 13px;
 }
 
 .gist, .gist-file, .gist-data {
