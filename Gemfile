@@ -1,6 +1,5 @@
-source :rubygems
+source "http://rubygems.org"
 
-ruby '1.9.3'
 
-gem "middleman", "~> 3.0.0.rc.2"
-gem "heroku"
+gem "middleman", "~>3.2.2"
+gem "breakpoint", "~>2.4.2"
