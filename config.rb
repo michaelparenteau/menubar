@@ -8,6 +8,7 @@
 
 # Change Compass configuration
 compass_config do |config|
+  require "breakpoint"
   config.output_style = :compact
 end
 

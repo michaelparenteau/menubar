@@ -1,6 +1,10 @@
 @import "compass";
 @import "compass/css3";
 @import "compass/reset";
+@import "breakpoint";
+
+// assum min-width (by default) if only a number
+$medium-width: 860px;
 
 // mixin (this should be it's own file and included as needed)
 @mixin menubar($color, $font-color, $height, $radius: false) {
@@ -70,21 +74,28 @@ body {
   font-family: helvetica, arial, sans-serif;
 }
 h1 {
-  font-size: 100px;
+  font-size: 50px;
   font-family: sans-serif;
   font-family: ostrichRounded;
   text-align: center;
   padding: 40px 0 0;
   margin-bottom: 0;
   vertical-align: bottom;
+  @include breakpoint($medium-width) {
+    font-size: 100px;
+  }
 }
 
 h2 {
   font-size: 24px;
   letter-spacing: -1px;
+  text-align: center;
+  &:after {
+    text-align: left;
+  }
 }
 
-a { 
+a {
   color: #EA4C89;
   text-decoration: none;
   &:hover {
@@ -110,15 +121,21 @@ a {
 .wrapper {
   @include box-shadow(0 0 5px rgba(0,0,0,0.5));
   background: rgba(255,255,255,0.5);
-  width: 600px;
+  width: 80%;
   margin: 0 auto;
   height: 100%;
   padding: 0 40px;
   position: relative;
+  @include breakpoint($medium-width) {
+    width: 700px;
+  }
 }
 
 .panel {
   margin: 20px 0 40px;
+  @include breakpoint($medium-width) {
+    width: 700px;
+  }
 }
 
 .footer {
@@ -160,3 +177,10 @@ a {
     border: 1px solid #999;
   }
 }
+
+@include breakpoint(max-width $medium-width) {
+  .github {
+    top: 20px;
+  }
+}
+
